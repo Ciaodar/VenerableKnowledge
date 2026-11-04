@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "venerable_knowledge:item/ring_of_venerable_knowledge"
+  }
+}

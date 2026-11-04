@@ -1,0 +1,56 @@
+{
+  "effect.venerable_knowledge.venerable_knowledge": "Venerable Knowledge",
+  "effect.venerable_knowledge.venerable_knowledge.description": "Multiplies experience dropped by slain creatures (2x / 4x / 8x / 16x) without affecting item drops.",
+  "effect.venerable_knowledge.venerable_knowledge.desc": "Multiplies experience dropped by slain creatures (2x / 4x / 8x / 16x) without affecting item drops.",
+
+  "item.minecraft.potion.effect.venerable_knowledge": "Potion of Venerable Knowledge",
+  "item.minecraft.splash_potion.effect.venerable_knowledge": "Splash Potion of Venerable Knowledge",
+  "item.minecraft.lingering_potion.effect.venerable_knowledge": "Lingering Potion of Venerable Knowledge",
+  "item.minecraft.tipped_arrow.effect.venerable_knowledge": "Arrow of Venerable Knowledge",
+
+  "item.minecraft.potion.effect.long_venerable_knowledge": "Potion of Venerable Knowledge",
+  "item.minecraft.splash_potion.effect.long_venerable_knowledge": "Splash Potion of Venerable Knowledge",
+  "item.minecraft.lingering_potion.effect.long_venerable_knowledge": "Lingering Potion of Venerable Knowledge",
+  "item.minecraft.tipped_arrow.effect.long_venerable_knowledge": "Arrow of Venerable Knowledge",
+
+  "item.minecraft.potion.effect.venerable_knowledge_2": "Potion of Venerable Knowledge",
+  "item.minecraft.splash_potion.effect.venerable_knowledge_2": "Splash Potion of Venerable Knowledge",
+  "item.minecraft.lingering_potion.effect.venerable_knowledge_2": "Lingering Potion of Venerable Knowledge",
+  "item.minecraft.tipped_arrow.effect.venerable_knowledge_2": "Arrow of Venerable Knowledge",
+
+  "item.minecraft.potion.effect.long_venerable_knowledge_2": "Potion of Venerable Knowledge",
+  "item.minecraft.splash_potion.effect.long_venerable_knowledge_2": "Splash Potion of Venerable Knowledge",
+  "item.minecraft.lingering_potion.effect.long_venerable_knowledge_2": "Lingering Potion of Venerable Knowledge",
+  "item.minecraft.tipped_arrow.effect.long_venerable_knowledge_2": "Arrow of Venerable Knowledge",
+
+  "item.minecraft.potion.effect.venerable_knowledge_3": "Potion of Venerable Knowledge",
+  "item.minecraft.splash_potion.effect.venerable_knowledge_3": "Splash Potion of Venerable Knowledge",
+  "item.minecraft.lingering_potion.effect.venerable_knowledge_3": "Lingering Potion of Venerable Knowledge",
+  "item.minecraft.tipped_arrow.effect.venerable_knowledge_3": "Arrow of Venerable Knowledge",
+
+  "item.minecraft.potion.effect.long_venerable_knowledge_3": "Potion of Venerable Knowledge",
+  "item.minecraft.splash_potion.effect.long_venerable_knowledge_3": "Splash Potion of Venerable Knowledge",
+  "item.minecraft.lingering_potion.effect.long_venerable_knowledge_3": "Lingering Potion of Venerable Knowledge",
+  "item.minecraft.tipped_arrow.effect.long_venerable_knowledge_3": "Arrow of Venerable Knowledge",
+
+  "item.minecraft.potion.effect.venerable_knowledge_4": "Potion of Venerable Knowledge",
+  "item.minecraft.splash_potion.effect.venerable_knowledge_4": "Splash Potion of Venerable Knowledge",
+  "item.minecraft.lingering_potion.effect.venerable_knowledge_4": "Lingering Potion of Venerable Knowledge",
+  "item.minecraft.tipped_arrow.effect.venerable_knowledge_4": "Arrow of Venerable Knowledge",
+
+  "item.minecraft.potion.effect.long_venerable_knowledge_4": "Potion of Venerable Knowledge",
+  "item.minecraft.splash_potion.effect.long_venerable_knowledge_4": "Splash Potion of Venerable Knowledge",
+  "item.minecraft.lingering_potion.effect.long_venerable_knowledge_4": "Lingering Potion of Venerable Knowledge",
+  "item.minecraft.tipped_arrow.effect.long_venerable_knowledge_4": "Arrow of Venerable Knowledge",
+
+  "potion.potency.2": "III",
+  "potion.potency.3": "IV",
+
+  "item.potionring.ring_of_venerable_knowledge": "Ring of Venerable Knowledge",
+  "item.venerable_knowledge.ring_of_venerable_knowledge": "Ring of Venerable Knowledge",
+  "tooltip.venerable_knowledge.ring_description": "Channels venerable wisdom from slain foes.",
+  "tooltip.venerable_knowledge.ring_level_1": "• Level I (1 Ring): 4x Experience Multiplier",
+  "tooltip.venerable_knowledge.ring_level_2": "• Level II (2 Rings): 8x Experience Multiplier",
+
+  "curios.identifier.ring": "Ring"
+}

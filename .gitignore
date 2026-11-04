@@ -1,0 +1,33 @@
+# Gradle
+.gradle/
+build/
+**/build/
+build-logic/.gradle/
+build-logic/build/
+
+# Runs
+run/
+runs/
+**/run/
+**/runs/
+
+# IDE & Editor
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+bin/
+eclipse/
+out/
+
+# Project specific
+/branding/
+/releases/
+
+# Logs & crash reports
+*.log
+hs_err_pid*

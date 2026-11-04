@@ -1,0 +1,56 @@
+{
+  "effect.venerable_knowledge.venerable_knowledge": "Ulu Bilgelik",
+  "effect.venerable_knowledge.venerable_knowledge.description": "Eşya düşüşlerini etkilemeden, katledilen canlılardan düşen tecrübe puanını (XP) çoğaltır (2x / 4x / 8x / 16x).",
+  "effect.venerable_knowledge.venerable_knowledge.desc": "Eşya düşüşlerini etkilemeden, katledilen canlılardan düşen tecrübe puanını (XP) çoğaltır (2x / 4x / 8x / 16x).",
+
+  "item.minecraft.potion.effect.venerable_knowledge": "Ulu Bilgelik İksiri",
+  "item.minecraft.splash_potion.effect.venerable_knowledge": "Fırlatılabilir Ulu Bilgelik İksiri",
+  "item.minecraft.lingering_potion.effect.venerable_knowledge": "Kalıcı Ulu Bilgelik İksiri",
+  "item.minecraft.tipped_arrow.effect.venerable_knowledge": "Ulu Bilgelik Oku",
+
+  "item.minecraft.potion.effect.long_venerable_knowledge": "Ulu Bilgelik İksiri",
+  "item.minecraft.splash_potion.effect.long_venerable_knowledge": "Fırlatılabilir Ulu Bilgelik İksiri",
+  "item.minecraft.lingering_potion.effect.long_venerable_knowledge": "Kalıcı Ulu Bilgelik İksiri",
+  "item.minecraft.tipped_arrow.effect.long_venerable_knowledge": "Ulu Bilgelik Oku",
+
+  "item.minecraft.potion.effect.venerable_knowledge_2": "Ulu Bilgelik İksiri",
+  "item.minecraft.splash_potion.effect.venerable_knowledge_2": "Fırlatılabilir Ulu Bilgelik İksiri",
+  "item.minecraft.lingering_potion.effect.venerable_knowledge_2": "Kalıcı Ulu Bilgelik İksiri",
+  "item.minecraft.tipped_arrow.effect.venerable_knowledge_2": "Ulu Bilgelik Oku",
+
+  "item.minecraft.potion.effect.long_venerable_knowledge_2": "Ulu Bilgelik İksiri",
+  "item.minecraft.splash_potion.effect.long_venerable_knowledge_2": "Fırlatılabilir Ulu Bilgelik İksiri",
+  "item.minecraft.lingering_potion.effect.long_venerable_knowledge_2": "Kalıcı Ulu Bilgelik İksiri",
+  "item.minecraft.tipped_arrow.effect.long_venerable_knowledge_2": "Ulu Bilgelik Oku",
+
+  "item.minecraft.potion.effect.venerable_knowledge_3": "Ulu Bilgelik İksiri",
+  "item.minecraft.splash_potion.effect.venerable_knowledge_3": "Fırlatılabilir Ulu Bilgelik İksiri",
+  "item.minecraft.lingering_potion.effect.venerable_knowledge_3": "Kalıcı Ulu Bilgelik İksiri",
+  "item.minecraft.tipped_arrow.effect.venerable_knowledge_3": "Ulu Bilgelik Oku",
+
+  "item.minecraft.potion.effect.long_venerable_knowledge_3": "Ulu Bilgelik İksiri",
+  "item.minecraft.splash_potion.effect.long_venerable_knowledge_3": "Fırlatılabilir Ulu Bilgelik İksiri",
+  "item.minecraft.lingering_potion.effect.long_venerable_knowledge_3": "Kalıcı Ulu Bilgelik İksiri",
+  "item.minecraft.tipped_arrow.effect.long_venerable_knowledge_3": "Ulu Bilgelik Oku",
+
+  "item.minecraft.potion.effect.venerable_knowledge_4": "Ulu Bilgelik İksiri",
+  "item.minecraft.splash_potion.effect.venerable_knowledge_4": "Fırlatılabilir Ulu Bilgelik İksiri",
+  "item.minecraft.lingering_potion.effect.venerable_knowledge_4": "Kalıcı Ulu Bilgelik İksiri",
+  "item.minecraft.tipped_arrow.effect.venerable_knowledge_4": "Ulu Bilgelik Oku",
+
+  "item.minecraft.potion.effect.long_venerable_knowledge_4": "Ulu Bilgelik İksiri",
+  "item.minecraft.splash_potion.effect.long_venerable_knowledge_4": "Fırlatılabilir Ulu Bilgelik İksiri",
+  "item.minecraft.lingering_potion.effect.long_venerable_knowledge_4": "Kalıcı Ulu Bilgelik İksiri",
+  "item.minecraft.tipped_arrow.effect.long_venerable_knowledge_4": "Ulu Bilgelik Oku",
+
+  "potion.potency.2": "III",
+  "potion.potency.3": "IV",
+
+  "item.potionring.ring_of_venerable_knowledge": "Ulu Bilgelik Yüzüğü",
+  "item.venerable_knowledge.ring_of_venerable_knowledge": "Ulu Bilgelik Yüzüğü",
+  "tooltip.venerable_knowledge.ring_description": "Yenilen canlıların ulu tecrübesini açığa çıkarır.",
+  "tooltip.venerable_knowledge.ring_level_1": "• Seviye I (1 Yüzük): 4 Kat Tecrübe Puanı (XP)",
+  "tooltip.venerable_knowledge.ring_level_2": "• Seviye II (2 Yüzük): 8 Kat Tecrübe Puanı (XP)",
+
+  "curios.identifier.ring": "Yüzük"
+}
