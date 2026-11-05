@@ -1,9 +1,11 @@
 package com.venerableknowledge;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffect;
@@ -260,6 +262,32 @@ public class VenerableKnowledgeCommon {
             }
         } catch (Exception e) {
             LOGGER.warn("Failed to update potionring.txt configuration: {}", e.getMessage());
+        }
+    }
+
+    /**
+     * Appends client-side tooltip enhancements for Ring of Venerable Knowledge.
+     * Adds description, Level 1 &amp; Level 2 multiplier information, and mod attribution.
+     * Deduplicates trailing components if duplicate mod names or identical trailing lines exist.
+     *
+     * @param tooltip the list of tooltip components
+     */
+    public static void appendRingTooltip(List<Component> tooltip) {
+        if (tooltip == null) {
+            return;
+        }
+
+        if (tooltip.size() >= 2 && tooltip.get(tooltip.size() - 1).getString().equals(tooltip.get(tooltip.size() - 2).getString())) {
+            tooltip.remove(tooltip.size() - 1);
+        }
+
+        tooltip.add(Component.translatable("tooltip.venerable_knowledge.ring_description").withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("tooltip.venerable_knowledge.ring_level_1").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("tooltip.venerable_knowledge.ring_level_2").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.literal("§dEffect of Venerable Knowledge"));
+
+        if (tooltip.size() >= 2 && tooltip.get(tooltip.size() - 1).getString().equals(tooltip.get(tooltip.size() - 2).getString())) {
+            tooltip.remove(tooltip.size() - 1);
         }
     }
 }
