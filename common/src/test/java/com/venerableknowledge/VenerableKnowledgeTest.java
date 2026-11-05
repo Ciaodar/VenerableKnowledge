@@ -2,6 +2,7 @@ package com.venerableknowledge;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import net.minecraft.network.chat.Component;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,6 +13,7 @@ import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -122,6 +124,20 @@ public class VenerableKnowledgeTest {
 
                 assertTrue(json.has("item.potionring.ring_of_venerable_knowledge"),
                         langFile + " must contain 'item.potionring.ring_of_venerable_knowledge'");
+
+                assertTrue(json.has("tooltip.venerable_knowledge.ring_description"),
+                        langFile + " must contain 'tooltip.venerable_knowledge.ring_description'");
+                assertTrue(json.has("tooltip.venerable_knowledge.ring_level_1"),
+                        langFile + " must contain 'tooltip.venerable_knowledge.ring_level_1'");
+                assertTrue(json.has("tooltip.venerable_knowledge.ring_level_2"),
+                        langFile + " must contain 'tooltip.venerable_knowledge.ring_level_2'");
+
+                if ("en_us.json".equals(langFile)) {
+                    assertEquals("• Level I (1 Ring): 2x Experience Multiplier",
+                            json.get("tooltip.venerable_knowledge.ring_level_1").getAsString());
+                    assertEquals("• Level II (2 Rings): 4x Experience Multiplier",
+                            json.get("tooltip.venerable_knowledge.ring_level_2").getAsString());
+                }
             }
         }
     }
@@ -139,5 +155,60 @@ public class VenerableKnowledgeTest {
                 .anyMatch(line -> line.equals("venerable_knowledge:venerable_knowledge#9699539"));
 
         assertTrue(containsExpectedEntry, "config/potionring.txt must contain 'venerable_knowledge:venerable_knowledge#9699539'");
+    }
+
+    @Test
+    @DisplayName("appendRingTooltip adds description, level 1, level 2, and mod attribution")
+    void testAppendRingTooltip() {
+        List<Component> tooltip = new ArrayList<>();
+        tooltip.add(Component.literal("Ring of Venerable Knowledge"));
+        VenerableKnowledgeCommon.appendRingTooltip(tooltip);
+
+        assertEquals(5, tooltip.size());
+        assertEquals("Ring of Venerable Knowledge", tooltip.get(0).getString());
+        assertEquals("tooltip.venerable_knowledge.ring_description", tooltip.get(1).getString());
+        assertEquals("tooltip.venerable_knowledge.ring_level_1", tooltip.get(2).getString());
+        assertEquals("tooltip.venerable_knowledge.ring_level_2", tooltip.get(3).getString());
+        assertEquals("§dEffect of Venerable Knowledge", tooltip.get(4).getString());
+    }
+
+    @Test
+    @DisplayName("appendRingTooltip deduplicates duplicate trailing lines")
+    void testAppendRingTooltipDeduplication() {
+        List<Component> tooltip = new ArrayList<>();
+        tooltip.add(Component.literal("Ring of Venerable Knowledge"));
+        tooltip.add(Component.literal("Potion Rings - Reforged"));
+        tooltip.add(Component.literal("Potion Rings - Reforged"));
+
+        VenerableKnowledgeCommon.appendRingTooltip(tooltip);
+
+        assertEquals(6, tooltip.size());
+        assertEquals("Ring of Venerable Knowledge", tooltip.get(0).getString());
+        assertEquals("Potion Rings - Reforged", tooltip.get(1).getString());
+        assertEquals("tooltip.venerable_knowledge.ring_description", tooltip.get(2).getString());
+        assertEquals("tooltip.venerable_knowledge.ring_level_1", tooltip.get(3).getString());
+        assertEquals("tooltip.venerable_knowledge.ring_level_2", tooltip.get(4).getString());
+        assertEquals("§dEffect of Venerable Knowledge", tooltip.get(5).getString());
+    }
+
+    @Test
+    @DisplayName("Potion Rings Reforged model assets exist and custom texture is removed")
+    void testPotionRingAssets() throws IOException {
+        Path root = findProjectRoot();
+        Path assetsDir = root.resolve("common/src/main/resources/assets/potionring");
+
+        Path oldPng = assetsDir.resolve("textures/item/ring_of_venerable_knowledge.png");
+        assertFalse(Files.exists(oldPng), "Custom texture png must be removed");
+
+        Path modelFile = assetsDir.resolve("models/item/ring_of_venerable_knowledge.json");
+        assertTrue(Files.exists(modelFile), "Ring model json must exist");
+        try (Reader reader = Files.newBufferedReader(modelFile, StandardCharsets.UTF_8)) {
+            JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
+            JsonObject textures = json.getAsJsonObject("textures");
+            assertNotNull(textures);
+            assertEquals("potionring:item/gold_ring", textures.get("layer0").getAsString());
+            assertEquals("potionring:item/gem_color", textures.get("layer1").getAsString());
+            assertEquals("potionring:item/gem_light", textures.get("layer2").getAsString());
+        }
     }
 }
