@@ -4,18 +4,19 @@ import com.venerableknowledge.VenerableKnowledgeCommon;
 import com.venerableknowledge.effect.VenerableKnowledgeEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.Potions;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.brewing.PotionBrewEvent;
+import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.living.LivingExperienceDropEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -79,6 +80,17 @@ public class VenerableKnowledgeNeoForge {
         NeoForge.EVENT_BUS.addListener(VenerableKnowledgeNeoForge::onLivingExperienceDrop);
         NeoForge.EVENT_BUS.addListener(VenerableKnowledgeNeoForge::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(VenerableKnowledgeNeoForge::onPotionBrewPre);
+        NeoForge.EVENT_BUS.addListener(VenerableKnowledgeNeoForge::onRegisterBrewingRecipes);
+    }
+
+    public static void onRegisterBrewingRecipes(RegisterBrewingRecipesEvent event) {
+        event.getBuilder().addMix(Potions.AWKWARD, Items.EXPERIENCE_BOTTLE, VENERABLE_KNOWLEDGE_POTION);
+        event.getBuilder().addMix(VENERABLE_KNOWLEDGE_POTION, Items.LAPIS_BLOCK, VENERABLE_KNOWLEDGE_2_POTION);
+        event.getBuilder().addMix(LONG_VENERABLE_KNOWLEDGE_POTION, Items.LAPIS_BLOCK, LONG_VENERABLE_KNOWLEDGE_2_POTION);
+        event.getBuilder().addMix(VENERABLE_KNOWLEDGE_POTION, Items.REDSTONE, LONG_VENERABLE_KNOWLEDGE_POTION);
+        event.getBuilder().addMix(VENERABLE_KNOWLEDGE_2_POTION, Items.REDSTONE, LONG_VENERABLE_KNOWLEDGE_2_POTION);
+        event.getBuilder().addMix(VENERABLE_KNOWLEDGE_3_POTION, Items.REDSTONE, LONG_VENERABLE_KNOWLEDGE_3_POTION);
+        event.getBuilder().addMix(VENERABLE_KNOWLEDGE_4_POTION, Items.REDSTONE, LONG_VENERABLE_KNOWLEDGE_4_POTION);
     }
 
     public static void onLivingExperienceDrop(LivingExperienceDropEvent event) {

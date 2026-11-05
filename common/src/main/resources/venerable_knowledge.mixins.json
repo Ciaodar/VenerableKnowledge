@@ -4,7 +4,7 @@
   "package": "com.venerableknowledge.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "BrewingRecipeMixin"
+    "PotionBrewingMixin"
   ],
   "client": [],
   "injectors": {

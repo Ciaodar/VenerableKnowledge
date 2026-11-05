@@ -13,10 +13,10 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 public abstract class LivingEntityXpMixin {
 
     @Shadow
-    public abstract @Nullable Player getLastHurtByPlayer();
+    protected @Nullable Player lastHurtByPlayer;
 
     @ModifyArg(
-        method = "dropExperience(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/Entity;)V",
+        method = "dropExperience(Lnet/minecraft/world/entity/Entity;)V",
         at = @At(
             value = "INVOKE",
             target = "Lnet/minecraft/world/entity/ExperienceOrb;award(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;I)V"
@@ -28,7 +28,7 @@ public abstract class LivingEntityXpMixin {
             return droppedExperience;
         }
 
-        Player player = this.getLastHurtByPlayer();
+        Player player = this.lastHurtByPlayer;
         if (player != null) {
             int amp = VenerableKnowledgeCommon.getEffectiveAmplifier(player);
             if (amp >= 0) {

@@ -4,8 +4,8 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -36,15 +36,15 @@ public class VenerableKnowledgeCommon {
 
     public static Holder<MobEffect> VENERABLE_KNOWLEDGE_EFFECT;
 
-    public static final List<Identifier> FOREIGN_EFFECT_IDS = List.of(
-        Identifier.fromNamespaceAndPath("apotheosis", "ancient_knowledge"),
-        Identifier.fromNamespaceAndPath("apothic_attributes", "ancient_knowledge"),
-        Identifier.fromNamespaceAndPath("apothic_attributes", "knowledge"),
-        Identifier.fromNamespaceAndPath("zenith", "ancient_knowledge")
+    public static final List<ResourceLocation> FOREIGN_EFFECT_IDS = List.of(
+        ResourceLocation.fromNamespaceAndPath("apotheosis", "ancient_knowledge"),
+        ResourceLocation.fromNamespaceAndPath("apothic_attributes", "ancient_knowledge"),
+        ResourceLocation.fromNamespaceAndPath("apothic_attributes", "knowledge"),
+        ResourceLocation.fromNamespaceAndPath("zenith", "ancient_knowledge")
     );
 
-    public static Identifier id(String path) {
-        return Identifier.fromNamespaceAndPath(MOD_ID, path);
+    public static ResourceLocation id(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 
     public static void init() {
@@ -78,8 +78,8 @@ public class VenerableKnowledgeCommon {
             return;
         }
 
-        for (Identifier foreignId : FOREIGN_EFFECT_IDS) {
-            Optional<Holder.Reference<MobEffect>> holderOpt = BuiltInRegistries.MOB_EFFECT.get(foreignId);
+        for (ResourceLocation foreignId : FOREIGN_EFFECT_IDS) {
+            Optional<Holder.Reference<MobEffect>> holderOpt = BuiltInRegistries.MOB_EFFECT.getHolder(foreignId);
             if (holderOpt.isPresent()) {
                 Holder.Reference<MobEffect> foreignHolder = holderOpt.get();
                 if (entity.hasEffect(foreignHolder)) {
@@ -120,8 +120,8 @@ public class VenerableKnowledgeCommon {
             }
         }
 
-        for (Identifier foreignId : FOREIGN_EFFECT_IDS) {
-            Optional<Holder.Reference<MobEffect>> holderOpt = BuiltInRegistries.MOB_EFFECT.get(foreignId);
+        for (ResourceLocation foreignId : FOREIGN_EFFECT_IDS) {
+            Optional<Holder.Reference<MobEffect>> holderOpt = BuiltInRegistries.MOB_EFFECT.getHolder(foreignId);
             if (holderOpt.isPresent()) {
                 Holder.Reference<MobEffect> foreignHolder = holderOpt.get();
                 if (player.hasEffect(foreignHolder)) {
@@ -164,7 +164,7 @@ public class VenerableKnowledgeCommon {
         }
         return contents.potion().get().unwrapKey()
             .map(key -> {
-                Identifier potionId = key.identifier();
+                ResourceLocation potionId = key.location();
                 if (!MOD_ID.equals(potionId.getNamespace())) {
                     return false;
                 }
@@ -193,7 +193,7 @@ public class VenerableKnowledgeCommon {
             return false;
         }
 
-        Identifier potionId = keyOpt.get().identifier();
+        ResourceLocation potionId = keyOpt.get().location();
         if (!MOD_ID.equals(potionId.getNamespace())) {
             return false;
         }
