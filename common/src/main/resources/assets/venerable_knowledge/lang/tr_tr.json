@@ -49,8 +49,8 @@
   "item.potionring.ring_of_venerable_knowledge": "Ulu Bilgelik Yüzüğü",
   "item.venerable_knowledge.ring_of_venerable_knowledge": "Ulu Bilgelik Yüzüğü",
   "tooltip.venerable_knowledge.ring_description": "Yenilen canlıların ulu tecrübesini açığa çıkarır.",
-  "tooltip.venerable_knowledge.ring_level_1": "• Seviye I (1 Yüzük): 4 Kat Tecrübe Puanı (XP)",
-  "tooltip.venerable_knowledge.ring_level_2": "• Seviye II (2 Yüzük): 8 Kat Tecrübe Puanı (XP)",
+  "tooltip.venerable_knowledge.ring_level_1": "• Seviye I (1 Yüzük): 2 Kat Tecrübe Puanı (XP)",
+  "tooltip.venerable_knowledge.ring_level_2": "• Seviye II (2 Yüzük): 4 Kat Tecrübe Puanı (XP)",
 
   "curios.identifier.ring": "Yüzük"
 }

@@ -20,7 +20,11 @@ dependencies {
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    testImplementation 'com.google.code.gson:gson:2.10.1'
+    testImplementation 'com.google.code.gson:gson:2.12.1'
+}
+
+compileTestJava {
+    classpath += sourceSets.main.compileClasspath
 }
 
 test {
@@ -48,17 +52,12 @@ artifacts {
 def loaderAttribute = Attribute.of('io.github.mcgradleconventions.loader', String)
 ['apiElements', 'runtimeElements', 'sourcesElements', 'javadocElements'].each { variant ->
     configurations.named(variant) {
-        attributes {
-            attribute(loaderAttribute, 'common')
-        }
+        attributes.attribute(loaderAttribute, 'common')
     }
 }
-sourceSets.configureEach {
-    [it.compileClasspathConfigurationName, it.runtimeClasspathConfigurationName].each { variant->
-        configurations.named(variant) {
-            attributes {
-                attribute(loaderAttribute, 'common')
-            }
-        }
-    }
+
+// Automatically create source sets for data generation
+def generatedResources = file('src/generated/resources')
+if (generatedResources.exists()) {
+    sourceSets.main.resources.srcDir(generatedResources)
 }

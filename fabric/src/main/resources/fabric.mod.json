@@ -18,6 +18,9 @@
     "entrypoints": {
         "main": [
             "com.venerableknowledge.fabric.VenerableKnowledgeFabric"
+        ],
+        "client": [
+            "com.venerableknowledge.fabric.client.VenerableKnowledgeFabricClient"
         ]
     },
     "mixins": [
