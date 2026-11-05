@@ -5,11 +5,15 @@
     "name": "${mod_name}",
     "description": "${description}",
     "authors": [
-        "${mod_author}"
+        "Ciaodar"
     ],
-    "contact": {},
+    "contact": {
+        "homepage": "https://github.com/Ciaodar/VenerableKnowledge",
+        "sources": "https://github.com/Ciaodar/VenerableKnowledge",
+        "issues": "https://github.com/Ciaodar/VenerableKnowledge/issues"
+    },
     "license": "${license}",
-    "icon": "icon.png",
+    "icon": "assets/venerable_knowledge/icon.png",
     "environment": "*",
     "entrypoints": {
         "main": [
