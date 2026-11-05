@@ -1,14 +1,18 @@
 modLoader = "javafml" #mandatory
 loaderVersion = "${neoforge_loader_version_range}" #mandatory
 license = "${license}"
+issueTrackerURL = "https://github.com/Ciaodar/VenerableKnowledge/issues"
 
 [[mods]]
 modId = "${mod_id}"
 version = "${version}"
 displayName = "${mod_name}"
+displayURL = "https://github.com/Ciaodar/VenerableKnowledge"
+issueTrackerURL = "https://github.com/Ciaodar/VenerableKnowledge/issues"
+logoFile = "icon.png"
 iconFile = "icon.png"
-credits = "${credits}"
-authors = "${mod_author}"
+credits = "Ciaodar"
+authors = "Ciaodar"
 description = '''${description}'''
 
 [[dependencies.${mod_id}]]
