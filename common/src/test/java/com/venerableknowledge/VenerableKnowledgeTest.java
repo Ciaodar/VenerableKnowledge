@@ -211,4 +211,46 @@ public class VenerableKnowledgeTest {
             assertEquals("potionring:item/gem_light", textures.get("layer2").getAsString());
         }
     }
+
+    @Test
+    @DisplayName("Curios, Trinkets, Accessories, and Potion Rings item tags exist and contain ring_of_venerable_knowledge")
+    void testRingItemTags() throws IOException {
+        Path root = findProjectRoot();
+        Path dataDir = root.resolve("common/src/main/resources/data");
+
+        String[] tagPaths = {
+            "curios/tags/item/ring.json",
+            "curios/tags/items/ring.json",
+            "potionring/tags/item/potion_rings.json",
+            "potionring/tags/items/potion_rings.json",
+            "trinkets/tags/item/hand/ring.json",
+            "trinkets/tags/items/hand/ring.json",
+            "trinkets/tags/item/offhand/ring.json",
+            "trinkets/tags/items/offhand/ring.json",
+            "accessories/tags/item/ring.json",
+            "accessories/tags/items/ring.json",
+            "c/tags/item/rings.json",
+            "c/tags/items/rings.json",
+            "c/tags/item/ring.json",
+            "c/tags/items/ring.json"
+        };
+
+        for (String tagPath : tagPaths) {
+            Path file = dataDir.resolve(tagPath);
+            assertTrue(Files.exists(file), "Tag file must exist: " + tagPath);
+            try (Reader reader = Files.newBufferedReader(file, StandardCharsets.UTF_8)) {
+                JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
+                assertFalse(json.get("replace").getAsBoolean(), tagPath + " 'replace' should be false");
+                assertTrue(json.has("values") && json.get("values").isJsonArray(), tagPath + " must have 'values' array");
+                boolean found = false;
+                for (var element : json.getAsJsonArray("values")) {
+                    if (element.isJsonObject() && "potionring:ring_of_venerable_knowledge".equals(element.getAsJsonObject().get("id").getAsString())) {
+                        found = true;
+                        break;
+                    }
+                }
+                assertTrue(found, tagPath + " must contain 'potionring:ring_of_venerable_knowledge'");
+            }
+        }
+    }
 }
