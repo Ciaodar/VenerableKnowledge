@@ -223,4 +223,53 @@ public class VenerableKnowledgeTest {
             assertEquals(-1, tints.get(2).getAsJsonObject().get("value").getAsInt());
         }
     }
+
+    @Test
+    @DisplayName("Curios, Potion Rings, Trinkets, Accessories, and Conventional tags include ring_of_venerable_knowledge")
+    void testRingItemTags() throws IOException {
+        Path root = findProjectRoot();
+        Path dataDir = root.resolve("common/src/main/resources/data");
+
+        String[] tagPaths = {
+            "curios/tags/item/ring.json",
+            "curios/tags/items/ring.json",
+            "potionring/tags/item/potion_rings.json",
+            "potionring/tags/items/potion_rings.json",
+            "trinkets/tags/item/hand/ring.json",
+            "trinkets/tags/items/hand/ring.json",
+            "trinkets/tags/item/offhand/ring.json",
+            "trinkets/tags/items/offhand/ring.json",
+            "accessories/tags/item/ring.json",
+            "accessories/tags/items/ring.json",
+            "c/tags/item/rings.json",
+            "c/tags/items/rings.json",
+            "c/tags/item/ring.json",
+            "c/tags/items/ring.json"
+        };
+
+        for (String tagPath : tagPaths) {
+            Path file = dataDir.resolve(tagPath);
+            assertTrue(Files.exists(file), "Tag file must exist: " + tagPath);
+
+            try (Reader reader = Files.newBufferedReader(file, StandardCharsets.UTF_8)) {
+                JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
+                assertTrue(json.has("values"), tagPath + " must have 'values'");
+                var values = json.getAsJsonArray("values");
+                boolean found = false;
+                for (var element : values) {
+                    if (element.isJsonObject()) {
+                        JsonObject obj = element.getAsJsonObject();
+                        if (obj.has("id") && "potionring:ring_of_venerable_knowledge".equals(obj.get("id").getAsString())) {
+                            found = true;
+                            break;
+                        }
+                    } else if (element.isJsonPrimitive() && "potionring:ring_of_venerable_knowledge".equals(element.getAsString())) {
+                        found = true;
+                        break;
+                    }
+                }
+                assertTrue(found, tagPath + " must contain 'potionring:ring_of_venerable_knowledge'");
+            }
+        }
+    }
 }
