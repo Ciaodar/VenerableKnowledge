@@ -1,14 +1,16 @@
 modLoader="javafml"
 loaderVersion="${loader_version_range}"
 license="${mod_license}"
+issueTrackerURL="https://github.com/Ciaodar/VenerableKnowledge/issues"
 
 [[mods]]
 modId="${mod_id}"
 version="${version}"
 displayName="${mod_name}"
+displayURL="https://github.com/Ciaodar/VenerableKnowledge"
 logoFile="icon.png"
-credits="Metehan"
-authors="${mod_authors}"
+credits="Ciaodar"
+authors="Ciaodar"
 description='''${mod_description}'''
 
 [[dependencies.${mod_id}]]

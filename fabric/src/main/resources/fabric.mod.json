@@ -5,11 +5,15 @@
     "name": "Effect of Venerable Knowledge",
     "description": "Adds the Effect of Venerable Knowledge and Experience Potions to Minecraft.",
     "authors": [
-        "Metehan"
+        "Ciaodar"
     ],
-    "contact": {},
+    "contact": {
+        "homepage": "https://github.com/Ciaodar/VenerableKnowledge",
+        "sources": "https://github.com/Ciaodar/VenerableKnowledge",
+        "issues": "https://github.com/Ciaodar/VenerableKnowledge/issues"
+    },
     "license": "MIT",
-    "icon": "icon.png",
+    "icon": "assets/venerable_knowledge/icon.png",
     "environment": "*",
     "entrypoints": {
         "main": [
