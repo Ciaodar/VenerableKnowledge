@@ -22,7 +22,10 @@ public class VenerableKnowledgeTest {
     private static Path findProjectRoot() {
         Path dir = Path.of("").toAbsolutePath();
         while (dir != null) {
-            if (Files.exists(dir.resolve("settings.gradle")) || Files.exists(dir.resolve("gradle.properties"))) {
+            if (Files.isDirectory(dir.resolve("common")) && Files.isDirectory(dir.resolve("config"))) {
+                return dir;
+            }
+            if (Files.exists(dir.resolve(".git"))) {
                 return dir;
             }
             dir = dir.getParent();

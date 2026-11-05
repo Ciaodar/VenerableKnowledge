@@ -1,11 +1,13 @@
-# Effect of Venerable Knowledge (Minecraft 26.3)
+# Effect of Venerable Knowledge (Minecraft 1.20.x)
 
-[![Minecraft 26.3](https://img.shields.io/badge/Minecraft-26.3-brightgreen.svg)](https://minecraft.net/)
+[![Minecraft 1.20.x](https://img.shields.io/badge/Minecraft-1.20.x-brightgreen.svg)](https://minecraft.net/)
 [![Fabric](https://img.shields.io/badge/Loader-Fabric-lightgrey.svg)](https://fabricmc.net/)
-[![NeoForge](https://img.shields.io/badge/Loader-NeoForge-orange.svg)](https://neoforged.net/)
+[![Forge](https://img.shields.io/badge/Loader-Forge-orange.svg)](https://minecraftforge.net/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A high-performance, elegant, and modular **Multi-Loader (Fabric & NeoForge)** Minecraft mod that introduces the **Effect of Venerable Knowledge** and an extensive tier-based potion progression system that multiplies mob experience drops (2x to 16x) without altering vanilla loot drops.
+A high-performance, elegant, and modular **Multi-Loader (Fabric & Forge)** Minecraft mod that introduces the **Effect of Venerable Knowledge** and an extensive tier-based potion progression system that multiplies mob experience drops (2x to 16x) without altering vanilla loot drops.
+
+Compatible with Minecraft `1.20.x` (`[1.20, 1.21)`), including 1.20.1!
 
 ---
 
@@ -29,7 +31,7 @@ $$\text{Multiplier} = 2^{\min(\text{amplifier}, 10) + 1}$$
 
 ## 🧪 Potion Progression & Brewing Tree
 
-The mod features a tiered brewing progression with **49 data-driven recipes**:
+The mod features a tiered brewing progression:
 
 1. **Tier I (2x XP)**:
    - `Awkward Potion` + `Bottle o' Enchanting` $\rightarrow$ **Potion of Venerable Knowledge I** (2:00)
@@ -75,15 +77,14 @@ Includes roman numeral extensions (`III`, `IV`) for extended potion potency disp
 
 ## 📁 Project Architecture
 
-The project utilizes a modern Gradle composite multi-loader architecture:
 ```
 VenerableKnowledge/
-├── common/        # Shared core logic, mixins, effects, recipes, and assets
+├── common/        # Shared core logic, effects, and assets
 │   ├── src/main/java/com/venerableknowledge/
-│   ├── src/main/resources/data/venerable_knowledge/recipe/brewing/
+│   ├── src/main/resources/
 │   └── src/test/java/com/venerableknowledge/VenerableKnowledgeTest.java
-├── fabric/        # Fabric loader specific entrypoint and mixin bindings
-├── neoforge/      # NeoForge loader specific entrypoint and event handlers
+├── fabric/        # Fabric loader module (Fabric Loom 1.10)
+├── forge/         # Forge loader module (ForgeGradle 6.0)
 └── config/        # Default configuration files
 ```
 
@@ -92,13 +93,8 @@ VenerableKnowledge/
 ## 🔨 Building & Testing
 
 ### Requirements
-- **Java 25+** (configured via Gradle Toolchain)
-- **Gradle 9.7+** (included Gradle Wrapper `gradlew`)
-
-### Running Unit Tests
-```bash
-./gradlew test
-```
+- **Java 17 / 21**
+- Gradle Wrapper included (`gradlew`)
 
 ### Building Mod JARs
 ```bash
@@ -106,8 +102,8 @@ VenerableKnowledge/
 ```
 
 Built artifacts will be generated in:
-- Fabric: `fabric/build/libs/venerable_knowledge-fabric-1.0.0.jar`
-- NeoForge: `neoforge/build/libs/venerable_knowledge-neoforge-1.0.0.jar`
+- Fabric: `fabric/build/libs/venerable_knowledge-fabric-1.20.x-1.0.0.jar`
+- Forge: `forge/build/libs/venerable_knowledge-forge-1.20.x-1.0.0.jar`
 
 ---
 

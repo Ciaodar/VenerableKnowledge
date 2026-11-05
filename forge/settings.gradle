@@ -1,0 +1,12 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven {
+            name = 'MinecraftForge'
+            url = uri('https://maven.minecraftforge.net/')
+        }
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'venerable_knowledge-forge'

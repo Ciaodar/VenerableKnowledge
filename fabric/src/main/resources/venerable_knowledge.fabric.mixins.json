@@ -1,12 +1,15 @@
 {
-  "required": true,
-  "minVersion": "0.8",
-  "package": "com.venerableknowledge.fabric.mixin",
-  "compatibilityLevel": "JAVA_25",
-  "mixins": [
-    "LivingEntityXpMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  }
+    "required": true,
+    "minVersion": "0.8",
+    "package": "com.venerableknowledge.fabric.mixin",
+    "compatibilityLevel": "JAVA_17",
+    "mixins": [
+        "LivingEntityXpMixin",
+        "PlayerTickMixin",
+        "PotionBrewingInvoker",
+        "PotionBrewingMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
 }

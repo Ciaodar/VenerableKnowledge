@@ -1,14 +1,14 @@
 {
     "schemaVersion": 1,
-    "id": "${mod_id}",
+    "id": "venerable_knowledge",
     "version": "${version}",
-    "name": "${mod_name}",
-    "description": "${description}",
+    "name": "Effect of Venerable Knowledge",
+    "description": "Adds the Effect of Venerable Knowledge and Experience Potions to Minecraft.",
     "authors": [
-        "${mod_author}"
+        "Metehan"
     ],
     "contact": {},
-    "license": "${license}",
+    "license": "MIT",
     "icon": "icon.png",
     "environment": "*",
     "entrypoints": {
@@ -17,13 +17,12 @@
         ]
     },
     "mixins": [
-        "venerable_knowledge.mixins.json",
         "venerable_knowledge.fabric.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=${fabric_loader_version}",
+        "fabricloader": ">=0.16.10",
         "fabric-api": "*",
-        "minecraft": "~${minecraft_version}",
-        "java": ">=${java_version}"
+        "minecraft": ">=1.20 <1.21",
+        "java": ">=17"
     }
 }
