@@ -23,6 +23,10 @@ dependencies {
     testImplementation 'com.google.code.gson:gson:2.10.1'
 }
 
+tasks.named('compileTestJava', JavaCompile) {
+    classpath += sourceSets.main.compileClasspath
+}
+
 test {
     useJUnitPlatform()
     classpath += sourceSets.main.compileClasspath

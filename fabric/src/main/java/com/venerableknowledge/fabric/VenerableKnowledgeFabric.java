@@ -3,13 +3,15 @@ package com.venerableknowledge.fabric;
 import com.venerableknowledge.VenerableKnowledgeCommon;
 import com.venerableknowledge.effect.VenerableKnowledgeEffect;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.registry.FabricPotionBrewingBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.Potions;
 
 public class VenerableKnowledgeFabric implements ModInitializer {
 
@@ -38,6 +40,16 @@ public class VenerableKnowledgeFabric implements ModInitializer {
         LONG_VENERABLE_KNOWLEDGE_3 = registerPotion("long_venerable_knowledge_3", 6000, 2);
         VENERABLE_KNOWLEDGE_4 = registerPotion("venerable_knowledge_4", 2400, 3);
         LONG_VENERABLE_KNOWLEDGE_4 = registerPotion("long_venerable_knowledge_4", 6000, 3);
+
+        FabricPotionBrewingBuilder.BUILD.register(builder -> {
+            builder.addMix(Potions.AWKWARD, Items.EXPERIENCE_BOTTLE, VENERABLE_KNOWLEDGE);
+            builder.addMix(VENERABLE_KNOWLEDGE, Items.REDSTONE, LONG_VENERABLE_KNOWLEDGE);
+            builder.addMix(VENERABLE_KNOWLEDGE, Items.LAPIS_BLOCK, VENERABLE_KNOWLEDGE_2);
+            builder.addMix(LONG_VENERABLE_KNOWLEDGE, Items.LAPIS_BLOCK, LONG_VENERABLE_KNOWLEDGE_2);
+            builder.addMix(VENERABLE_KNOWLEDGE_2, Items.REDSTONE, LONG_VENERABLE_KNOWLEDGE_2);
+            builder.addMix(VENERABLE_KNOWLEDGE_3, Items.REDSTONE, LONG_VENERABLE_KNOWLEDGE_3);
+            builder.addMix(VENERABLE_KNOWLEDGE_4, Items.REDSTONE, LONG_VENERABLE_KNOWLEDGE_4);
+        });
 
         VenerableKnowledgeCommon.setupPotionRingConfig(FabricLoader.getInstance().getConfigDir());
     }

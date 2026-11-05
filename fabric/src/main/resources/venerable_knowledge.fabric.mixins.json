@@ -4,7 +4,8 @@
   "package": "com.venerableknowledge.fabric.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "LivingEntityXpMixin"
+    "LivingEntityXpMixin",
+    "PotionBrewingMixin"
   ],
   "injectors": {
     "defaultRequire": 1

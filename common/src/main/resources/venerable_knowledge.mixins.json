@@ -2,10 +2,8 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.venerableknowledge.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "mixins": [
-    "BrewingRecipeMixin"
-  ],
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [],
   "client": [],
   "injectors": {
     "defaultRequire": 1

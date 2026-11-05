@@ -214,6 +214,51 @@ public class VenerableKnowledgeCommon {
     }
 
     /**
+     * Returns an upgraded potion ItemStack when brewing with an enchanted book.
+     * Preserves potion container item (normal, splash, lingering) and custom components.
+     */
+    public static ItemStack getUpgradedPotionStack(ItemStack inputStack) {
+        if (inputStack == null || inputStack.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+        PotionContents contents = inputStack.get(DataComponents.POTION_CONTENTS);
+        if (contents == null || contents.potion().isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+        Optional<ResourceKey<Potion>> keyOpt = contents.potion().get().unwrapKey();
+        if (keyOpt.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+        String path = keyOpt.get().identifier().getPath();
+        String targetPath;
+        if (path.equals("venerable_knowledge_2")) {
+            targetPath = "venerable_knowledge_3";
+        } else if (path.equals("long_venerable_knowledge_2")) {
+            targetPath = "long_venerable_knowledge_3";
+        } else if (path.equals("venerable_knowledge_3")) {
+            targetPath = "venerable_knowledge_4";
+        } else if (path.equals("long_venerable_knowledge_3")) {
+            targetPath = "long_venerable_knowledge_4";
+        } else {
+            return ItemStack.EMPTY;
+        }
+
+        Optional<Holder.Reference<Potion>> targetPotionOpt = BuiltInRegistries.POTION.get(id(targetPath));
+        if (targetPotionOpt.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+
+        ItemStack result = inputStack.copyWithCount(1);
+        result.set(DataComponents.POTION_CONTENTS, new PotionContents(
+            Optional.of(targetPotionOpt.get()),
+            contents.customColor(),
+            contents.customEffects(),
+            contents.customName()
+        ));
+        return result;
+    }
+
+    /**
      * PotionRing Config Helper:
      * Safely checks configDir.resolve("potionring.txt").
      * Ensures venerable_knowledge:venerable_knowledge#9699539 is present (and replaces ancient_knowledge:ancient_knowledge#9699539 if found).

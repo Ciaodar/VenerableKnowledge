@@ -13,7 +13,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -57,37 +56,17 @@ public class VenerableKnowledgeTest {
     }
 
     @Test
-    @DisplayName("All 49 JSON brewing recipes parse cleanly and have valid minecraft:brewing structure")
-    void testBrewingRecipesStructure() throws IOException {
-        Path root = findProjectRoot();
-        Path brewingDir = root.resolve("common/src/main/resources/data/venerable_knowledge/recipe/brewing");
-        assertTrue(Files.isDirectory(brewingDir), "Brewing directory must exist at " + brewingDir);
-
-        List<Path> recipeFiles;
-        try (Stream<Path> stream = Files.list(brewingDir)) {
-            recipeFiles = stream.filter(p -> p.toString().endsWith(".json")).toList();
-        }
-
-        assertEquals(49, recipeFiles.size(), "There must be exactly 49 brewing recipe JSON files");
-
-        for (Path recipeFile : recipeFiles) {
-            try (Reader reader = Files.newBufferedReader(recipeFile, StandardCharsets.UTF_8)) {
-                JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
-
-                assertTrue(json.has("type"), "Recipe " + recipeFile.getFileName() + " must have 'type'");
-                assertEquals("minecraft:brewing", json.get("type").getAsString(),
-                        "Recipe " + recipeFile.getFileName() + " type must be 'minecraft:brewing'");
-
-                assertTrue(json.has("input") && json.get("input").isJsonObject(),
-                        "Recipe " + recipeFile.getFileName() + " must have valid 'input' object");
-
-                assertTrue(json.has("output") && json.get("output").isJsonObject(),
-                        "Recipe " + recipeFile.getFileName() + " must have valid 'output' object");
-
-                assertTrue(json.has("reagent") && json.get("reagent").isJsonObject(),
-                        "Recipe " + recipeFile.getFileName() + " must have valid 'reagent' object");
-            }
-        }
+    @DisplayName("Foreign effect IDs are correctly configured for Apotheosis, Apothic Attributes, and Zenith")
+    void testForeignEffectIds() {
+        assertEquals(4, VenerableKnowledgeCommon.FOREIGN_EFFECT_IDS.size());
+        assertTrue(VenerableKnowledgeCommon.FOREIGN_EFFECT_IDS.stream()
+                .anyMatch(id -> id.getNamespace().equals("apotheosis") && id.getPath().equals("ancient_knowledge")));
+        assertTrue(VenerableKnowledgeCommon.FOREIGN_EFFECT_IDS.stream()
+                .anyMatch(id -> id.getNamespace().equals("apothic_attributes") && id.getPath().equals("ancient_knowledge")));
+        assertTrue(VenerableKnowledgeCommon.FOREIGN_EFFECT_IDS.stream()
+                .anyMatch(id -> id.getNamespace().equals("apothic_attributes") && id.getPath().equals("knowledge")));
+        assertTrue(VenerableKnowledgeCommon.FOREIGN_EFFECT_IDS.stream()
+                .anyMatch(id -> id.getNamespace().equals("zenith") && id.getPath().equals("ancient_knowledge")));
     }
 
     @Test
