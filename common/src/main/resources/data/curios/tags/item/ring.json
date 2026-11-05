@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "potionring:ring_of_venerable_knowledge",
+      "required": false
+    }
+  ]
+}
